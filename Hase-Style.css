@@ -1,6 +1,6 @@
 #root {
     display: grid;
-    grid-template: repeat(7, 7em) / repeat(7, 7em);
+    grid-template: repeat(5, 5em) / repeat(5, 5em);
 }
 
 
