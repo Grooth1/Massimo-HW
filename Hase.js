@@ -11,11 +11,11 @@ function abc() {
         if (a === 5 && b%2==1)  {
             b++;
             direction = -1;
-            a += direction;
-        } else if (a === 1 && b !== 1) {
+            
+        } else if (a === 1 && b % 2 ===0) {
             b++;
             direction = 1;
-            a += direction;
+           
         } else {
             a += direction;    
         }
