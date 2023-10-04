@@ -8,7 +8,7 @@ function abc() {
     const avs = setInterval(function () {
         bunny.style.gridColumnStart = a;
         bunny.style.gridRowStart = b;
-        if (a === 5) {
+        if (a === 5 && b%2==1)  {
             b++;
             direction = -1;
             a += direction;
