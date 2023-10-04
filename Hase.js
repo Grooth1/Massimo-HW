@@ -8,6 +8,10 @@ function abc() {
     const avs = setInterval(function () {
         bunny.style.gridColumnStart = a;
         bunny.style.gridRowStart = b;
+
+        if (b ===  5 && a === 5) {
+            clearInterval(avs);
+        }
         if (a === 5 && b%2==1)  {
             b++;
             direction = -1;
@@ -19,10 +23,7 @@ function abc() {
         } else {
             a += direction;    
         }
-        
-        if (b ===  5 && a === 5) {
-            clearInterval(avs);
-        }
+
     }, 400);
     
 }
