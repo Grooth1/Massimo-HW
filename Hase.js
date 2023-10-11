@@ -5,13 +5,12 @@ function abc() {
     let a = 1;
     let b = 1;
     let direction = 1; // 1 for moving right, -1 for moving left
-    const avs = setInterval(function () {
+    const avs = setInterval(function abc() {
         bunny.style.gridColumnStart = a;
         bunny.style.gridRowStart = b;
 
-        if (b ===  7 && a === 7) {
-            clearInterval(avs);
-        }
+     
+        
         if (a === 10 && b%2==1)  {
             b++;
             direction = -1;
