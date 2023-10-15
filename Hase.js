@@ -9,8 +9,9 @@ function abc() {
         bunny.style.gridColumnStart = a;
         bunny.style.gridRowStart = b;
 
-     
-        
+        if (b ===  7 && a === 7) {
+            clearInterval(avs);
+        }
         if (a === 10 && b%2==1)  {
             b++;
             direction = -1;
