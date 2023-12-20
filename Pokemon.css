@@ -18,7 +18,7 @@
 header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content:space-around;
     width: 100%;
 }
 
@@ -67,7 +67,7 @@ h1 {
     background-image: url("PokeballforM.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-color: black;
+    background-color: rgb(206, 15, 15);
 }
 
 button {
@@ -97,7 +97,7 @@ button {
         font-size: 20px;
         line-height: 30px;
         font-weight: bold;
-        text-align: center;
+        text-align: right;
         text-indent: 20px;
         
 }

@@ -4,7 +4,7 @@ const game = document.getElementById('game');
 
 let firstPick;
 let isPaused = true;
-let currentscore =0;
+
 
 
 const colors = {
@@ -46,8 +46,8 @@ const loadPokemon = async () => {
 let trys = 0;
 let highscore = 0;
 let matches = 0;
-
-
+let currenttries = 0;
+let besttries;
 const displayPokemon = (pokemon) => {
     pokemon.sort(_ => Math.random() - 0.5);
     const pokemonHTML = pokemon.map(pokemon => {
@@ -90,20 +90,21 @@ const clickCard = (e) => {
                 firstPick = null;
                 isPaused = false;
             }, 500)
-            trys++;
-            if (trys === 20) {
+            currenttries++;
+            if (currenttries === 20) {
                 alert("Zu viele Versuche")
                 resetGame()
             }
         } else {
             matches++;
-            trys++;
+            currenttries++;
             if (matches === 8) {
-                console.log("WINNER");
-
+                alert("WINNER");
+               
+                    document.getElementById("Versuche").innerText = currenttries
                 
             }
-            if (trys === 20) {
+            if (currenttries === 20) {
                 alert("Zu viele Versuche")
                 resetGame()
             }
@@ -115,12 +116,23 @@ const clickCard = (e) => {
     }
 
 }
-const showhighscore = (highscore) =>
+const showhighscore = (currentscore) =>
 {
-    
+    if (currenttries < besttries)
+    {
+        besttries = currenttries;
+    }
     if (matches < 9) {
-        currentscore = matches * 500;
+        
+        let currentscore = matches * 500;
+        
+
+        if (currentscore > highscore) {
+            highscore = currentscore
+        }
+
         console.log(`New High Score: ${highscore}`);
+        document.getElementById("Currentscore").innerText=currentscore
         document.getElementById("Highscore").innerText=highscore
     }
     if (matches == 0)
@@ -153,8 +165,8 @@ const resetGame = async () => {
     isPaused = true;
     firstPick = null;
     matches = 0;
-    trys = 0;
-    highscore = 0;
+    currenttries = 0;
+    
 
 
     setTimeout(async () => {
