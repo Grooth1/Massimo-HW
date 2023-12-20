@@ -4,6 +4,7 @@ const game = document.getElementById('game');
 
 let firstPick;
 let isPaused = true;
+let currentscore =0;
 
 
 const colors = {
@@ -118,15 +119,15 @@ const showhighscore = (highscore) =>
 {
     
     if (matches < 9) {
-        highscore = matches * 500;
+        currentscore = matches * 500;
         console.log(`New High Score: ${highscore}`);
         document.getElementById("Highscore").innerText=highscore
     }
     if (matches == 0)
     {
-        highscore = 0;
+        currentscore = 0;
     }
-    if (highscore == 4000)
+    if (currentscore == 4000)
 
     {
         alert("Gratuliere du hast alle Pokepaare gefunden")
