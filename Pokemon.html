@@ -1,7 +1,6 @@
 
     
-</body>
-</html>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,26 +14,38 @@
 </head>
 
 <body>
+     
+        
     <div class="container">
 
         <header>
-            <h1>PokeMatch</h1>
-            <button onclick="resetGame()">Reset</button>
+            <h1>PokeMemory</h1>
+            </header>
+            
             <div class="test">
-        <h2>Benötigte Versuche: </h2>
-        <p id="Versuche"></p>
-        <h2> Highscore: </h2>
-                <p id="Highscore"></p>
-        <h2>Currentscore: </h2>
-        <p id="Currentscore"></p>
+                 <h2>Tries:</h2>
+                    <p id="LetzteVersuche"></p>
+                 <h2>Besttries: </h2>
+                     <p id="Versuche"></p>
+                 <h2> Highscore: </h2>
+                     <p id="Highscore"></p>
+                 <h2>Currentscore: </h2>
+                     <p id="Currentscore"></p>
+               
         </div>
-        </header>
+        <button onclick="resetGame()">Reset</button>
+      <div class ="test2">
 
+
+<button2 onclick="MultiPlayer()">Multiplayer</button2>
+      </div>
+ 
 
         <div id="game">
         </div>
     </div>
     <script src="Pokemon.js"></script>
+    
 </body>
 
 </html>
