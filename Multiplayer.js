@@ -42,21 +42,24 @@
 
 
     
-   
-    let foundPairs = 0;
+    
+    let foundPairs1 = 0;
     let tries = 0;
-
-let player1 ={
-        name:"Player1"
+    let winner;
+    
+    let player1 ={
+        name: "Player1",
+        foundPairs: 0
     };
-let player2 = {
-        name:"Player2"
+    let player2 = {
+        name: "Player2",
+        foundPairs: 0
     }
         
         
     
+    let currentPlayer = player1.name;
     
-    let currentPlayer = player1;
     
     
     const switchPlayer = () => {
@@ -66,12 +69,24 @@ let player2 = {
         }
         else 
         {
-            currentPlayer === player1.name;
+            currentPlayer = player1.name;
             }
         }
     
     
-  
+  const checkWinner = async () =>
+{
+    if (player1.foundPairs > player2.foundPairs && foundPairs1 == 8)
+    {
+        alert("Spieler 1 hat gewonnen")
+    }
+    else {
+        if(player2.foundPairs > player1.foundPairs && foundPairs1 == 8)
+            alert("Spieler 2 hat gewonnen")
+        
+    }
+        }
+
 
 
     const displayPokemon = (pokemon) => {
@@ -136,11 +151,12 @@ const clickCard = (e) => {
         } else {
                 
             tries++;
-            
-            foundPairs++;
-            if (foundPairs === 8) {
-                alert(`Spieler ${currentPlayer.name} gewinnt!`);
-                resetGame();
+            currentPlayer.foundPairs+1;
+            foundPairs1++;
+            if (foundPairs1 === 8) {
+                alert(`Spiel ist aus`);
+                checkWinner();
+                
             }
                
            
@@ -149,13 +165,16 @@ const clickCard = (e) => {
                 firstPick = null;
                 isPaused = false;
                
-                resetTimer();
-            }
+            resetTimer();
+             
+             document.getElementById("Player1Pairs").innerHTML = player1.foundPairs;
+             document.getElementById("Player2Pairs").innerHTML = player2.foundPairs;
         }
-       
+      
+        }
+        document.getElementById("AktuellerSpieler").innerHTML = currentPlayer;
     }
 
-    
 
    
         
@@ -182,7 +201,7 @@ const clickCard = (e) => {
         isPaused = true;
         firstPick = null;
         tries = 0;
-        foundPairs = 0;
+        foundPairs1 = 0;
         currentPlayer = player1;
         
         
