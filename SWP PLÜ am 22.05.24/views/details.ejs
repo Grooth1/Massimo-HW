@@ -1,0 +1,7 @@
+
+
+<% if (zoo && zoo.abteilungen) { %> <% zoo.abteilungen.forEach(e => { %>
+<li><%= e.name %></li>
+<% }) %> <% } else { %>
+<li>No departments found</li>
+<% } %>

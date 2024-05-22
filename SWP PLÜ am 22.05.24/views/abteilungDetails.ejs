@@ -1,0 +1,6 @@
+<% if (abteilungen.mitarbeiter.tiere) { %> <%
+abteilungen.mitarbeiter.tiere.forEach(e=> { %>
+<li><%= e.name %></li>
+<% }) %> <% } else { %>
+<li>No animals found.</li>
+<% } %>

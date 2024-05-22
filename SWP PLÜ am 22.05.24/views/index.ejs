@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <title>Hello 4AHWII ZOO</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h2>Massimo's Zoos</h2>
+    <ul>
+      <% zoos.forEach(e=> { %>
+      <li data-id="<%= e.id %>" hx-get="/zoo/<%= e.id %>" hx-target="#details">
+        <a href="/zoo/<%= e.id %>"><%= e.name %></a>
+        <%= `Land: ${e.land} Stadt: ${e.stadt} Adresse: ${e.adresse}
+        (${e.baujahr})`%>
+        <button onclick="location.href='/zoo/<%= e.id %>'">
+          More Information
+        </button>
+      </li>
+      <% }) %>
+    </ul>
+
+    <h3>Tierarten und -namen in einer Abteilung</h3>
+    <ul>
+      <% zoos.forEach(zoo => { %> <% zoo.abteilungen.forEach(abteilung => { %>
+      <li>
+        <a href="/abteilung/<%= abteilung.id %>"><%= abteilung.name %></a>
+        <ul>
+          <% abteilung.tiere.forEach(tier => { %>
+          <li><%= tier.name %></li>
+          <% }) %>
+        </ul>
+      </li>
+      <% }) %> <% }) %>
+    </ul>
+
+    <h3>Mitarbeiter und ihre Abteilungen</h3>
+    <ul>
+      <% zoos.forEach(zoo => { %> <% zoo.mitarbeiter.forEach(mitarbeiter => { %>
+      <li>
+        <a href="/mitarbeiter/<%= mitarbeiter.id %>"><%= mitarbeiter.name %></a>
+        <ul>
+          <% mitarbeiter.abteilungen.forEach(abteilung => { %>
+          <li><%= abteilung.name %></li>
+          <% }) %>
+        </ul>
+      </li>
+      <% }) %> <% }) %>
+    </ul>
+
+    <h3>Tiername ändern</h3>
+    <form action="/tier/aendern" method="post"> 
+      <label for="tierId">Tier ID:</label>
+      <input type="text" id="tierId" name="tierId" required />
+      <label for="neuerName">Neuer Name:</label>
+      <input type="text" id="neuerName" name="neuerName" required />
+      <input type="submit" value="Name ändern" />
+    </form>
+
+    <h3>Details:</h3>
+    <ul id="details">
+      No Zoo selected yet
+    </ul>
+  </body>
+</html>
