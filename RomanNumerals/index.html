@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Römische Zahlen Rechner</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                max-width: 600px;
+                margin: 20px auto;
+                padding: 20px;
+            }
+            .input-group {
+                margin-bottom: 15px;
+            }
+            input, button {
+                padding: 5px;
+                margin: 5px;
+            }
+            .result {
+                margin-top: 20px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Römische Zahlen Rechner</h1>
+
+        <div class="input-group">
+            <h3>Römische Zahlen addieren</h3>
+            <input
+                type="text"
+                id="roman1"
+                placeholder="Erste römische Zahl (z.B. X)"
+            >
+            <input
+                type="text"
+                id="roman2"
+                placeholder="Zweite römische Zahl (z.B. V)"
+            >
+            <button onclick="calculateRoman()">Addieren</button>
+            <div id="romanResult" class="result"></div>
+        </div>
+
+        <div class="input-group">
+            <h3>Normale Zahl in römische Zahl umwandeln</h3>
+            <input
+                type="number"
+                id="decimal"
+                placeholder="Normale Zahl (z.B. 15)"
+            >
+            <button onclick="convertToRoman()">Umwandeln</button>
+            <div id="decimalResult" class="result"></div>
+        </div>
+
+        <script src="roman.js"></script>
+        <script>
+            function calculateRoman() {
+                const roman1 = document.getElementById("roman1")
+                    .value.toUpperCase();
+                const roman2 = document.getElementById("roman2")
+                    .value.toUpperCase();
+                const roman3 = document.getElementById("roman2")
+                    .value.toUpperCase();
+                const roman4 = document.getElementById("roman2")
+                    .value.toUpperCase();
+                const roman5 = document.getElementById("roman2")
+                    .value.toUpperCase();
+                const roman6 = document.getElementById("roman2")
+                    .value.toUpperCase();
+                const roman7 = document.getElementById("roman2")
+                    .value.toUpperCase();
+                const result = addRomanNumerals(
+                    roman1,
+                    roman2,
+                    roman3,
+                    roman4,
+                    roman5,
+                    roman6,
+                    roman7,
+                );
+                document.getElementById("romanResult")
+                    .textContent =
+                        `${roman1} + ${roman2} = ${result} (${
+                            romanToDecimal(result)
+                        })`;
+            }
+
+            function convertToRoman() {
+                const decimal = parseInt(
+                    document.getElementById("decimal").value,
+                );
+                if (isNaN(decimal)) {
+                    document.getElementById("decimalResult")
+                        .textContent =
+                            "Bitte geben Sie eine gültige Zahl ein";
+                    return;
+                }
+                const result = decimalToRoman(decimal);
+                document.getElementById("decimalResult")
+                    .textContent = `${decimal} = ${result}`;
+            }
+        </script>
+    </body>
+</html>
