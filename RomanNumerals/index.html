@@ -27,18 +27,14 @@
     <body>
         <h1>Römische Zahlen Rechner</h1>
 
-        <div class="input-group">
+        <div class="input-group" id="romanInputGroup">
             <h3>Römische Zahlen addieren</h3>
             <input
                 type="text"
-                id="roman1"
-                placeholder="Erste römische Zahl (z.B. X)"
+                class="roman-input"
+                placeholder="Römische Zahl (z.B. X)"
             >
-            <input
-                type="text"
-                id="roman2"
-                placeholder="Zweite römische Zahl (z.B. V)"
-            >
+            <button onclick="addRomanInput()">Weitere Zahl hinzufügen</button>
             <button onclick="calculateRoman()">Addieren</button>
             <div id="romanResult" class="result"></div>
         </div>
@@ -56,35 +52,42 @@
 
         <script src="roman.js"></script>
         <script>
-            function calculateRoman() {
-                const roman1 = document.getElementById("roman1")
-                    .value.toUpperCase();
-                const roman2 = document.getElementById("roman2")
-                    .value.toUpperCase();
-                const roman3 = document.getElementById("roman2")
-                    .value.toUpperCase();
-                const roman4 = document.getElementById("roman2")
-                    .value.toUpperCase();
-                const roman5 = document.getElementById("roman2")
-                    .value.toUpperCase();
-                const roman6 = document.getElementById("roman2")
-                    .value.toUpperCase();
-                const roman7 = document.getElementById("roman2")
-                    .value.toUpperCase();
-                const result = addRomanNumerals(
-                    roman1,
-                    roman2,
-                    roman3,
-                    roman4,
-                    roman5,
-                    roman6,
-                    roman7,
+            function addRomanInput() {
+                const inputGroup = document.getElementById(
+                    "romanInputGroup",
                 );
+                const newInput = document.createElement(
+                    "input",
+                );
+                newInput.type = "text";
+                newInput.className = "roman-input";
+                newInput.placeholder = "Römische Zahl (z.B. X)";
+                inputGroup.insertBefore(
+                    newInput,
+                    inputGroup
+                        .children[
+                            inputGroup.children.length - 3
+                        ],
+                );
+            }
+
+            function calculateRoman() {
+                const romanInputs = document.querySelectorAll(
+                    ".roman-input",
+                );
+                let romanValues = [];
+                romanInputs.forEach((input) => {
+                    if (input.value) {
+                        romanValues.push(
+                            input.value.toUpperCase(),
+                        );
+                    }
+                });
+                const result = addRomanNumerals(...romanValues);
                 document.getElementById("romanResult")
-                    .textContent =
-                        `${roman1} + ${roman2} = ${result} (${
-                            romanToDecimal(result)
-                        })`;
+                    .textContent = `${
+                        romanValues.join(" + ")
+                    } = ${result} (${romanToDecimal(result)})`;
             }
 
             function convertToRoman() {
